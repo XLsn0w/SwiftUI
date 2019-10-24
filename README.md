@@ -39,3 +39,12 @@ struct ContentView : View {
 ```
 
 
+SwiftUI 的 View 是对于 UI 应该是如何展示的一个数据描述，并非真正用于显示的 View。现在的 iOS，底层会用 UIKit 实现，最终从数据描述的 View 生成真正的 UIView。
+
+每个 View 的内容，就是其 body 属性。返回值为 some View，这里的 some 需要解释一下。
+```
+public protocol View : _View {
+    associatedtype Body : View
+    var body: Self.Body { get }
+}
+```
